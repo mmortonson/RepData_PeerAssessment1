@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
@@ -57,7 +62,7 @@ library(ggplot2)
 qplot(daily_steps, binwidth = 500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 We can find the mean and median number of steps, ignoring NAs, as follows:
 
@@ -90,7 +95,7 @@ daily_pattern <- data.frame(minutes = as.integer(names(mean_steps)),
 qplot(minutes, mean_steps, data = daily_pattern, geom = "line")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
 
 
 ```r
@@ -151,7 +156,7 @@ daily_steps_impute_mean <- tapply(activity_impute_mean$steps,
 qplot(daily_steps_impute_mean, binwidth = 500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
 
 This histogram is basically the same as what we found before except that there are now more days in the second bin above 10000 steps. 
 This seems to make sense given our strategy for imputing missing data, since the total number of steps in the average daily activity pattern is
@@ -209,7 +214,7 @@ ggplot(activity_impute_mean, aes(minutes, steps)) +
     facet_grid(day_type ~ .)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-16-1.png) 
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16-1.png) 
 
 We can see that there are some clear differences between weekday and weekend activity. On average, on weekdays there are more steps in the morning (before about 10:00), whereas on weekends there are more steps in the middle of the day and at night.
 
@@ -221,4 +226,4 @@ ggplot(activity_impute_mean, aes(interval, steps)) +
     facet_grid(day_type ~ .)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-17-1.png) 
+![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17-1.png) 
